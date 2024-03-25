@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <title>News</title>
+    <link rel="stylesheet" href="News.css">
+</head>
+<body>
+<header>
+    <h2 class="F1_Live"><img src="photos/p12.png" width="100" height="50"></h2>
+    <button onclick="toggleAddNewsForm()">Add News</button>
+</header>
+
+<div class="blog-section">
+    <div class="section-content blog">
+        <div class="title">
+            <h2>News</h2>
+        </div>
+        <div class="cards">
+
+            <div id="addNewsForm" style="display: none;">
+                <h3>Add News</h3>
+                <input type="text" id="newsTitle" placeholder="Title">
+                <input type="file" id="newsImageURL" accept="image/*" capture="user">
+                <textarea id="newsContent" placeholder="Content"></textarea>
+                <button onclick="addNews()">Submit</button>
+            </div>
+
+            <div id="newsContainer">
+
+                
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-info">
+    </div>
+</footer>
+
+<script src="news.js"></script>
+
+
+
+</body>
+</html>

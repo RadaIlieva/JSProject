@@ -1,0 +1,313 @@
+*{ 
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+   
+
+ .blog-section{
+    width:100%;
+ }
+
+ .blog-section .section-content{ 
+    width: 85%;
+    margin: 10px auto;
+}
+  
+ .blog-section .section-content .title {
+    width:60%;
+    text-align: center;
+    margin:auto;
+ }
+
+ .blog-section .section-content .title h2{
+    margin:0px;
+    padding:120px;
+    font-size: 40px;
+    color:#6a6a6a;
+    text-transform: uppercase;
+ }
+ .blog-section .section-content .title p{
+    font-size: 18px;
+    color:#580f0f;
+    margin-top: 20px;
+ }
+
+ .blog-section .section-content .cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    margin:0px auto;
+}
+.blog-section .section-content .cards .card{
+    width:100%;
+    background-color: #f7f7f7;
+    position:relative;
+}
+
+.blog-section .section-content .cards .card img{
+    width:100%;
+    border-radius: 8px;
+    height: auto;
+}
+    
+.blog-section .section-content .cards .card .article{
+    padding:15px 20px;
+}
+
+ .blog-section .section-content .cards .card .article h4{
+    font-size: 24px;
+    color:#000000;
+ }
+
+ .blog-section .section-content .cards .card .article p{
+    font-size: 16px;
+    margin:10px 0px;
+    color:#6a6a6a;
+ }
+
+ blog-section .section-content .cards .card a{
+    text-decoration: none;
+    display: inline-block;
+    background-color: #25c5c5;
+    padding:8px 15px;
+    margin-left: 20px;
+    color:#fff;
+    margin-bottom: 20px;
+ }
+
+.blog-section .section-content .cards .card .posted-date p{
+    font-weight: 600;
+    overflow: hidden;  
+    position: absolute;
+    top:0;
+    Left:0;
+    display: inline-block;
+    background-color: #25c5d5;
+    padding:6px 15px;
+}
+
+
+@media screen and(max-width: 992px){
+    .blog-section .section-content .cards{
+    grid-template-columns:  repeat(2, 1fr);
+     }
+}
+ @media screen and (max-width: 768px){
+     .blog-section .section-content .cards{
+    grid-template-columns:  1fr;
+ }
+}
+  
+
+/* лентата за менюто */
+header{
+	
+	position:fixed;
+	top: 0;
+	left:0;
+	width: 100%;
+	padding: 30px 20px;
+	background: #8D021F; 
+	display: flex;
+	justify-content:space-between;
+	align-items:center;
+	z-index:99;
+} 
+button {
+    display: block;
+    width: 200px;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+/* Надписа в горния ляв ъгъл */
+.F1_Live{
+	border-radius:5px;
+	font-size:2em;
+	color:#fff;
+	user-select:none;
+}
+
+/* Полетата Home, About , Services Contact */
+.navigation a{
+	position:relative;
+	font-size: 1.1em;
+	color:#fff;
+	text-decoration:none;
+	font-weight:300; 
+	margin-left:50px;
+}
+/* Лентите под Home About Services Contact след минаване на мишката */
+.navigation a::after{
+    content:'';
+	left:0;
+	bottom:-6px;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+	border-radius:5px;
+	transform-origin: right;
+	transform: scaleX(0);
+	transition: transform .5s;
+
+
+}
+
+/* Допълнителни настройки */
+.navigation a:hover::after {
+	transform-origin: left;
+    transform: scaleX(1);
+}
+
+
+.footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #8D021F;
+	color: white;
+	text-align: center;
+  }
+	
+.footer-info {	
+margin-top: 20px;	
+
+text-align: center;
+flex: 1;
+color: black;
+}
+
+
+/* Add news form */
+#addNewsForm {
+    display: none;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#addNewsForm h3 {
+    text-align: center;
+}
+
+#addNewsForm input[type="text"],
+#addNewsForm input[type="file"],
+#addNewsForm textarea,
+#addNewsForm input[type="date"],
+#addNewsForm button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#addNewsForm button {
+    background-color: #8D021F;
+    color: white;
+    cursor: pointer;
+}
+
+#addNewsForm button:hover {
+    background-color: #8D021F;
+}
+
+#addNewsForm input[type="file"] {
+    padding: 8px 0;
+}
+
+#addNewsForm input[type="file"]::-webkit-file-upload-button {
+    padding: 10px 10px;
+    background-color: #8D021F;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#addNewsForm input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #8D021F;
+    
+}
+
+/* Added news */
+#newsContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 200%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
+
+.news {
+    width: 200%; 
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-sizing: border-box; 
+    margin-bottom: 20px;
+}
+
+.news h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.news img {
+    max-width: 70%; 
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.news p {
+    font-size: 1em;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.news p:last-child {
+    margin-bottom: 0;
+}
+
+.commentButton,
+.readComment {
+    background-color: #8D021F;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 8px;
+}
+.comment {
+    border-top: 5px solid #ccc;
+    border-bottom: 5px solid #ccc;
+    padding-bottom: 10px; 
+}
+
+
+@media (max-width: 768px) {
+    #newsContainer {
+      flex-direction: column;
+    }
+  
+    .news {
+      width: 50%;
+    }
+  }
