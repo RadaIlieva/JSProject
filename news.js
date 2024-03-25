@@ -69,8 +69,6 @@ function handleImageUpload(event) {
 
 document.getElementById('imageUpload');
 
-
-
 function displayNews() {
     const container = document.getElementById('newsContainer');
     container.innerHTML = '';
@@ -79,12 +77,15 @@ function displayNews() {
         const dateWithoutTime = new Date(news.date).toLocaleDateString('en-US');
 
         const newsHTML = `
+        
             <div class="news" id="news-${index}">
+                <button class="deleteButton" onclick="deleteNews(${index})"><i class = "fa fa-trash"></i></button>
                 <h2>${news.title}</h2>
                 <p>Author: ${news.author}</p>
                 <img src="${news.imageURL}" alt="News Image">
                 <p>${news.content}</p>
                 <p>${dateWithoutTime}</p>
+                
             
                 <button class="commentButton" onclick="toggleCommentForm(${index})">Add Comment</button>
                 <div id="commentForm-${index}" style="display: none;">
@@ -94,6 +95,7 @@ function displayNews() {
 
                 <button class="readComment" onclick="toggleComments(${index})">Read Comments</button>
                 <span id="commentCountElement-${index}"></span>
+                
 
                 <div id="comments-${index}" style="display: none;"></div>
             </div>
@@ -137,8 +139,33 @@ function addComment(newsIndex) {
     readCommentsButton.style.display = 'inline-block';
 
     updateCommentCount(newsIndex);
-    saveData()
+    saveData();
 }
+
+function deleteNews(newsIndex) {
+    const news = newsArray[newsIndex];
+    const isConfirmed = confirm(`Are you sure you want to delete the news titled "${news.title}"?`);
+    
+    if (isConfirmed) {
+        newsArray.splice(newsIndex, 1);
+        displayNews();
+        saveData();
+    }
+}
+
+function deleteComment(newsIndex, commentIndex) {
+    const news = newsArray[newsIndex];
+    const comment = news.comments[commentIndex];
+    const isConfirmed = confirm(`Are you sure you want to delete this comment by ${comment.author}?`);
+    
+    if (isConfirmed) {
+        news.comments.splice(commentIndex, 1);
+        displayComments(newsIndex);
+        updateCommentCount(newsIndex);
+        saveData();
+    }
+}
+
 
 function updateCommentCount(newsIndex) {
     const news = newsArray[newsIndex];
@@ -146,7 +173,6 @@ function updateCommentCount(newsIndex) {
     const commentCountElement = document.getElementById(`commentCountElement-${newsIndex}`);
     commentCountElement.textContent = ` (${commentCount})`;
 }
-
 
 function toggleCommentForm(newsIndex) {
     const commentForm = document.getElementById(`commentForm-${newsIndex}`);
@@ -174,7 +200,6 @@ function toggleComments(newsIndex) {
     }
 }
 
-
 function displayComments(newsIndex) {
     const commentsSection = document.getElementById(`comments-${newsIndex}`);
     commentsSection.innerHTML = '';
@@ -184,7 +209,9 @@ function displayComments(newsIndex) {
         const commentHTML = `
             <div class="comment">
                 <p>Author: ${comment.author}</p>
+                <button class="deleteButton" onclick="deleteComment(${newsIndex}, ${news.comments.indexOf(comment)})"><i class = "fa fa-trash"></i></button>
                 <p>${comment.text}</p>
+                
             </div>
         `;
         commentsSection.insertAdjacentHTML('beforeend', commentHTML);
@@ -199,7 +226,6 @@ function saveData() {
     localStorage.setItem("newsData", JSON.stringify(newsArray));
     localStorage.setItem("commentData", JSON.stringify(commentsToSave));
 }
-
 
 function loadData() {
     const storedData = localStorage.getItem('newsData');
@@ -221,8 +247,6 @@ function restoreComments() {
     }
     displayNews();
 }
-
-
 
 document.addEventListener('DOMContentLoaded', function() {
     loadData();

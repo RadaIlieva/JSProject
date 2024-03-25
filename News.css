@@ -246,14 +246,14 @@ color: black;
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    width: 200%; 
+    width: 150%; 
     max-width: 1200px; 
     margin: 0 auto; 
     padding: 0 20px; 
 }
 
 .news {
-    width: 200%; 
+    width: 1500%; 
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -268,7 +268,7 @@ color: black;
 }
 
 .news img {
-    max-width: 70%; 
+    max-width: 100%; 
     height: auto;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -282,6 +282,27 @@ color: black;
 
 .news p:last-child {
     margin-bottom: 0;
+}
+
+
+
+.deleteButton {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    float: right;
+    text-align: right;
+    padding: 5px;
+}
+
+.deleteButton i {
+    font-size: 1,5rem; 
+}
+
+
+
+.deleteButton:focus {
+    outline: none; 
 }
 
 .commentButton,
