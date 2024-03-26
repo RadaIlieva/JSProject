@@ -189,6 +189,7 @@ color: black;
     display: none;
     max-width: 500px;
     margin: 0 auto;
+    margin-bottom: 50px;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 10px;
@@ -244,22 +245,24 @@ color: black;
 /* Added news */
 #newsContainer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    gap: 20px;
-    width: 150%; 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
+    gap: 1px; 
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
+
 .news {
-    width: 1500%; 
+    width: calc(33% - 1px); 
     background-color: #f9f9f9;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    box-sizing: border-box; 
-    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 30px;
+    box-sizing: border-box;
+    margin-bottom: 40px;
 }
 
 .news h2 {
@@ -268,7 +271,7 @@ color: black;
 }
 
 .news img {
-    max-width: 100%; 
+    max-width: 100%;
     height: auto;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -284,25 +287,21 @@ color: black;
     margin-bottom: 0;
 }
 
-
-
 .deleteButton {
     background-color: transparent;
     border: none;
     cursor: pointer;
     float: right;
     text-align: right;
-    padding: 5px;
+    padding: 1px;
 }
 
 .deleteButton i {
-    font-size: 1,5rem; 
+    font-size: 1.3rem;
 }
 
-
-
 .deleteButton:focus {
-    outline: none; 
+    outline: none;
 }
 
 .commentButton,
@@ -316,19 +315,15 @@ color: black;
     margin-bottom: 10px;
     padding: 8px;
 }
+
 .comment {
     border-top: 5px solid #ccc;
     border-bottom: 5px solid #ccc;
-    padding-bottom: 10px; 
+    padding-bottom: 10px;
 }
 
-
 @media (max-width: 768px) {
-    #newsContainer {
-      flex-direction: column;
-    }
-  
     .news {
-      width: 50%;
+        width: calc(50% - 20px); 
     }
-  }
+}

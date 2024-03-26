@@ -73,6 +73,7 @@ function displayNews() {
     const container = document.getElementById('newsContainer');
     container.innerHTML = '';
 
+    
     newsArray.forEach((news, index) => { 
         const dateWithoutTime = new Date(news.date).toLocaleDateString('en-US');
 
@@ -82,9 +83,9 @@ function displayNews() {
                 <button class="deleteButton" onclick="deleteNews(${index})"><i class = "fa fa-trash"></i></button>
                 <h2>${news.title}</h2>
                 <p>Author: ${news.author}</p>
+                <p>Added on: ${dateWithoutTime}</p>
                 <img src="${news.imageURL}" alt="News Image">
                 <p>${news.content}</p>
-                <p>${dateWithoutTime}</p>
                 
             
                 <button class="commentButton" onclick="toggleCommentForm(${index})">Add Comment</button>
@@ -100,7 +101,7 @@ function displayNews() {
                 <div id="comments-${index}" style="display: none;"></div>
             </div>
         `;
-        container.insertAdjacentHTML('beforeend', newsHTML);
+        container.insertAdjacentHTML('afterbegin', newsHTML);
         displayComments(index);
 
         
