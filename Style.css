@@ -5,122 +5,20 @@
 	font-family:'Poppins',sans-serif;
 } 
 
-/* Снимка на background */
-body {
-	 padding-top: 200px;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     min-height: 100vh;
-     background-image: url("photos/p13.jpg"); 
-	 background-size:cover;
-	 background-position: center;
-}
-
-/*Видео интро на шофьорите*/
-.video-container {
-    position: fixed;
-    top: 150px;
-    right: 40px;
-    left: 600px;
-    width: 100%; 
-    max-width: 800px; 
-    height: auto;
-    background: transparent;
-    backdrop-filter: blur(20px);
-    border: 2px solid #000508;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-}
-
-.video-title {
-    color: #000508;
-    font-size: 1.2em;
-    margin: 0;
-    padding-top: 10px;
-    border-top: 2px solid #000508;
-    clip: 2;
-}
-
-.video-container video {
-    width: 100%;
-    height: auto;
-    margin-top: 1px;
-}
-
-@media screen and (max-width: 768px) {
-    .my-element {
-        width: 100%;
-        max-width: 600px;
-    }
-}
-    
-
-   
-
-/*Контейера информация за сайта*/
-.container {
-    columns:200px 2;
-    column-gap: 30px;
-    position: fixed;
-	left: 40px;
-	top: 125px;
-	width: calc(100% - 70px); 
-	max-width: 400px; 
-	height: auto;
-	background: transparent;
-	border: 2px solid rgba(0, 0, 0, 0.5);
-	border-radius: 20px;
-	backdrop-filter: blur(20px);
-	box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-	display: flex;
-	flex-direction: column;
-	padding: 5px;
-	font-family: 'Poppins', sans-serif;
-	
-}
-
-.container h2 {
-    font-size: 1.8em;
-    color: #00060b;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.container h4 {
-    font-size: 1.2em;
-    color: #00060b;
-    margin-bottom: 15px;
-    text-align: center;
-}
-.container p {
-    font-size: 1,2em;
-    line-height: 1.6;
-    color: #00060b;
-    text-align: justify;
-    margin-bottom: 20px;
-	margin-left: 10px;
-	margin-right: 10px;
-}
-
-/* лентата за менюто */
 header{
 	
 	position:fixed;
 	top: 0;
 	left:0;
 	width: 100%;
-	padding: 30px 20px;
-	background: #8D021F; 
+	padding: 10px 20px;
+	background: #090000b7; 
 	display: flex;
 	justify-content:space-between;
 	align-items:center;
 	z-index:99;
 } 
-/* Надписа в горния ляв ъгъл */
+
 .F1_Live{
 	border-radius:5px;
 	font-size:2em;
@@ -128,7 +26,6 @@ header{
 	user-select:none;
 }
 
-/* Полетата Home, About , Services Contact */
 .navigation a{
 	position:relative;
 	font-size: 1.1em;
@@ -137,7 +34,8 @@ header{
 	font-weight:300; 
 	margin-left:50px;
 }
-/* Лентите под Home About Services Contact след минаване на мишката */
+
+
 .navigation a::after{
     content:'';
 	left:0;
@@ -155,6 +53,77 @@ header{
 }
 
 
+body {
+    padding-top: 100px;
+    max-width: 800px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url("photos/360_F_399142352_IazbrsaVuFOUnDEbVvLafa3VwCmaxG05.jpg"); 
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size:cover;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 900px; 
+    height: 300px; 
+    background-image: url("photos/pngegg\ \(1\).png"); 
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 1;
+}
+
+.drivers-image {
+    width: 30%;
+    position: fixed;
+    bottom: 25px;
+    left: 30px;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .my-element {
+        width: 100%;
+        max-width: 500px;
+    }
+}
+    
+.center-text {
+    position:relative;
+    bottom:190px;
+    left: 45%;
+}
+
+.textarea {
+    text-align: center;
+    background-color: #9491912e;
+    border-radius: 20px;
+    padding: 40px;
+}
+
+.textarea h4 {
+    font-size: 4em;
+    color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.textarea h3 {
+    font-size: 3em;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+
+
+
 
 /* Допълнителни настройки */
 .navigation a:hover::after {
@@ -168,14 +137,13 @@ header{
 .navigation .btnLogin-popup {
 	width:130px;
 	height:50px;
-	background: transparant;
-	border:2px solid #fff;
+	border:3px solid #949191;
 	outline:none;
 	border-radius:6px;
 	cursor: pointer;
-	font-size:1.1em;
+	font-size:1.3em;
 	color: #8D021F;
-	font-weight:50;
+	font-weight:70;
 	margin-left:50px;
 	transition: .5s;
 	
@@ -186,16 +154,15 @@ header{
     color: #fff;
 	}
 	
-	/* квадрата за полето за регистация и логване */
 .wrapper {
     position: fixed;
     width: 400px;
-    height: 440px;
+    height: 480px;
     background: transparent;
-    border: 2px solid rgba(255, 255, 255, .5);
+    border: 2px solid rgba(239, 13, 13, 0.541);
     border-radius: 20px;
     backdrop-filter: blur(60px);
-    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    box-shadow: 5px 0 5px 3px rgba(184, 50, 50, 0.388);
     display: flex;
     justify-content: center; 
     align-items: center;
@@ -210,18 +177,17 @@ header{
 }
 
 .wrapper .active {
-    height: 520px;
+    height: 600px;
 }
 
 
-/* настрйки на кутуята за логване и регистрация */
 .wrapper .form-box {
     width: 100%;
-    padding: 40px;
+    padding: 50px;
 }
 
  .wrapper .form-box.login {  
-   transition: transform .18s ease;
+    transition: transform .18s ease;
 	transform: translateX(0);
 
  }   
@@ -236,13 +202,13 @@ header{
     position: absolute;
     transition: none;
     transform: translateX(400px);
-    height: 440px; /* Set the initial height */
+    height: 440px; 
 }
 
 .wrapper.active .form-box.register { 
     transition: transform .18s ease;
     transform: translateX(0);
-    height: 520px; /* Set the expanded height */
+    height: 520px; 
 }
  
 
@@ -252,7 +218,7 @@ header{
     right: 0;
     width: 45px;
     height: 45px;
-    background:#162938;
+    background:#8f4d4d6f;
 	font-size: 2em;
 	color:fff;
 	display: flex;
@@ -264,30 +230,28 @@ header{
 
 }
 
-/* Настройки на текста Login  в центъра на вадрата */
 .form-box h2 {
     font-size: 2em;
-    color: #162938;
+    color: #faf6f6ad;
     text-align: center;
 }
 
 
-/* Полетата за въвеждане на парола и имейл */
  .input-box{
     position: relative;
     width: 100%;
-    height: 50px;
-    border-bottom: 2px solid #162938;
+    height: 40px;
+    border-bottom: 2px solid #faf6f6ad;
     margin: 30px 0;
  }
- /* Полетата за въвеждане на парола и имейл текста се измества в ляво */
+
 .input-box label{
     position: absolute;
-	top: 50%;
+	top: 0%;
 	left: 5px;
 	transform: translateY(-50%);
 	font-size: 1em;
-	color:#162938;
+	color:#faf6f6ad;
 	font-weight: 500;
 	pointer-events: none;
 	transition: .5s;
@@ -305,7 +269,7 @@ header{
     border: none;
     outline: none;
 	font-size: 1em;
-	color: #162938;
+	color: #faf6f6ad;
 	font-weight: 600;
 	padding: 0 35px 0 5px;
 }
@@ -313,14 +277,14 @@ header{
     position: absolute;
     right: 8px;
 	font-size: 1.2em;
-	color:#162938;
+	color:#faf6f6ad;
 	line-height: 57px;
 
 }
 
 .remember-forgot{
     font-size: .9em;
-    color:#162938;
+    color:#faf6f6ad;
     font-weight: 500;
     margin: -15px 0 15px;
     display: flex;
@@ -328,19 +292,19 @@ header{
 }
 
 .remember-forgot label input{
-    accent-color:#162938;
+    accent-color:#faf6f6ad;
     margin-right: 3px;
 }
 
 .remember-forgot a {
-    color: #162938;
+    color: #faf6f6ad;
 	text-decoration: none;
 }
 
 .remember-forgot a:hover {
     text-decoration: underline;
 }
-/* Login Buton */
+
 .btn {
     width: 100%;
     height: 45px;
@@ -356,14 +320,14 @@ header{
 
 .login-register{
     font-size: .9em;
-    color: #162938;
+    color: #faf6f6ad;
     text-align: center;
     font-weight: 500;
     margin: 25px 0 10px;
 }
 
 .login-register p a {
-    color: #162938;
+    color: #faf6f6ad;
     text-decoration: none;
     font-weight: 600;
 }
@@ -382,8 +346,7 @@ header{
   }
 	
 .footer-info {	
-margin-top: 20px;	
-
+margin-top: 30px;
 text-align: center;
 flex: 1;
 color: black;

@@ -4,15 +4,36 @@ document.addEventListener('DOMContentLoaded', function() {
     const registerLink = document.querySelector('.register-link');
     const btnPopup = document.querySelector('.btnLogin-popup');
     const iconClose = document.querySelector('.icon-close');
-    const videoContainer = document.querySelector('.video-container');
-    const infoContainer = document.querySelector('.container');
+    const text = document.querySelector('.textarea');
+    const driverImage = document.querySelector('.drivers-image');
     const backgroundPhoto = document.querySelector('body');
 
     function registerUser(username, email, password) {
+        if (username.length < 4) {
+            alert("Username must be at least 4 characters.");
+            return;
+        }
+    
+        if (!validateEmail(email)) {
+            alert("Please enter a valid email address.");
+            return;
+        }
+    
+        if (password.length < 8 || !/[A-Z]/.test(password) || !/[a-z]/.test(password) || !/\d/.test(password)) {
+            alert("Password must be at least 8 characters and contain at least one uppercase letter, one lowercase letter, and one digit.");
+            return;
+        }
+    
         const newUser = { username: username, email: email, password: password };
         localStorage.setItem('currentUser', JSON.stringify(newUser));
         window.location.href = 'News.html';
     }
+    
+    function validateEmail(email) {
+        return email.includes('@');
+    }
+    
+    
 
     function loginUser(email, password) {
         const hardcodedUser = { email: 'user1@example.com', password: 'password1' };
@@ -29,22 +50,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     loginLink.addEventListener('click', () => {
         wrapper.classList.remove('active');
-        infoContainer.style.display = 'none';
-        backgroundPhoto.style.backgroundImage = 'url("photos/p13.jpg")';
+        driverImage.style.display = 'none';
     });
 
     btnPopup.addEventListener('click', () => {
         wrapper.classList.add('active-popup');
-        videoContainer.style.display = 'none';
-        infoContainer.style.display = 'none';
-        backgroundPhoto.style.backgroundImage = 'url("photos/p13.jpg")';
+        text.style.position = 'absolute';
+        text.style.left = '200px';
+        driverImage.style.display = 'none';
     });
 
     iconClose.addEventListener('click', () => {
         wrapper.classList.remove('active-popup');
-        videoContainer.style.display = 'block';
-        infoContainer.style.display = 'block';
-        backgroundPhoto.style.backgroundImage = 'url("photos/p13.jpg")';
+        text.style.display = 'block';
+        driverImage.style.display = 'block';
     });
 
     document.querySelector('.register form').addEventListener('submit', function(event) {

@@ -1,6 +1,25 @@
 let newsArray = [];
 let commentData = {};
 
+function getCurrentUserName() {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser) {
+        return currentUser.username;
+    } else {
+        return 'Anonymous';
+    }
+}
+
+function insertUserNameInHeader() {
+    const userNameElement = document.getElementById('user-name');
+    userNameElement.textContent = getCurrentUserName();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    insertUserNameInHeader();
+});
+
+
 function toggleAddNewsForm() {
     const form = document.getElementById('addNewsForm');
     if (form.style.display === 'none' || form.style.display === '') {
@@ -78,25 +97,29 @@ function displayNews() {
         const dateWithoutTime = new Date(news.date).toLocaleDateString('en-US');
 
         const newsHTML = `
-        
             <div class="news" id="news-${index}">
+
                 <button class="deleteButton" onclick="deleteNews(${index})"><i class = "fa fa-trash"></i></button>
+
                 <h2>${news.title}</h2>
-                <p>Author: ${news.author}</p>
-                <p>Added on: ${dateWithoutTime}</p>
+                <h3><i class="fa fa-user" aria-hidden="true"></i>Author: ${news.author}</h3>
+                <h4>Added on: ${dateWithoutTime}</h4>
                 <img src="${news.imageURL}" alt="News Image">
-                <p>${news.content}</p>
-                
+                    <div class="content-container">
+                        <p>${news.content}</p>
+                    </div>
             
-                <button class="commentButton" onclick="toggleCommentForm(${index})">Add Comment</button>
-                <div id="commentForm-${index}" style="display: none;">
-                    <textarea id="commentText-${index}" placeholder="Type your comment here"></textarea>
-                    <button class="commentButton" onclick="addComment(${index})">Submit Comment</button>
+                <div class ="buton-container">
+                
+                    <button class="commentButton" onclick="toggleCommentForm(${index})">Add Comment</button>
+                    <button class="readComment" onclick="toggleComments(${index})">Read Comments</button>
+                    <span class="counter" id="commentCountElement-${index}"></span>
                 </div>
 
-                <button class="readComment" onclick="toggleComments(${index})">Read Comments</button>
-                <span id="commentCountElement-${index}"></span>
-                
+                    <div class ="commentHere-container" id="commentForm-${index}" style="display: none;">
+                        <textarea id="commentText-${index}" placeholder="Type your comment here" style="width: 100%; height: 150px;"></textarea>
+                        <button class="commentButton" onclick="addComment(${index})">Submit Comment</button>
+                    </div>
 
                 <div id="comments-${index}" style="display: none;"></div>
             </div>
@@ -143,29 +166,7 @@ function addComment(newsIndex) {
     saveData();
 }
 
-function deleteNews(newsIndex) {
-    const news = newsArray[newsIndex];
-    const isConfirmed = confirm(`Are you sure you want to delete the news titled "${news.title}"?`);
-    
-    if (isConfirmed) {
-        newsArray.splice(newsIndex, 1);
-        displayNews();
-        saveData();
-    }
-}
 
-function deleteComment(newsIndex, commentIndex) {
-    const news = newsArray[newsIndex];
-    const comment = news.comments[commentIndex];
-    const isConfirmed = confirm(`Are you sure you want to delete this comment by ${comment.author}?`);
-    
-    if (isConfirmed) {
-        news.comments.splice(commentIndex, 1);
-        displayComments(newsIndex);
-        updateCommentCount(newsIndex);
-        saveData();
-    }
-}
 
 
 function updateCommentCount(newsIndex) {
@@ -209,14 +210,41 @@ function displayComments(newsIndex) {
     news.comments.forEach(comment => {
         const commentHTML = `
             <div class="comment">
-                <p>Author: ${comment.author}</p>
+                <h3><i class="fa fa-user" ></i>Author: ${comment.author}</h3>
                 <button class="deleteButton" onclick="deleteComment(${newsIndex}, ${news.comments.indexOf(comment)})"><i class = "fa fa-trash"></i></button>
                 <p>${comment.text}</p>
                 
             </div>
+
         `;
         commentsSection.insertAdjacentHTML('beforeend', commentHTML);
     });
+
+    commentsSection.classList.add('comments-container');
+}
+
+function deleteNews(newsIndex) {
+    const news = newsArray[newsIndex];
+    const isConfirmed = confirm(`Are you sure you want to delete the news titled "${news.title}"?`);
+    
+    if (isConfirmed) {
+        newsArray.splice(newsIndex, 1);
+        displayNews();
+        saveData();
+    }
+}
+
+function deleteComment(newsIndex, commentIndex) {
+    const news = newsArray[newsIndex];
+    const comment = news.comments[commentIndex];
+    const isConfirmed = confirm(`Are you sure you want to delete this comment by ${comment.author}?`);
+    
+    if (isConfirmed) {
+        news.comments.splice(commentIndex, 1);
+        displayComments(newsIndex);
+        updateCommentCount(newsIndex);
+        saveData();
+    }
 }
 
 function saveData() {
