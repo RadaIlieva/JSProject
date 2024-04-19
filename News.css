@@ -340,6 +340,28 @@ button {
 
 
 
+.deletеCommentButton {
+    color:#d8d1d1;
+    border-radius: 50%; 
+}   
+
+.deletеCommentButton {
+    background-color: transparent; 
+    border: none;
+    padding: 1px;
+    padding-left: 250px;
+    font-size: 1.3rem;
+    
+}
+
+
+.deletеCommentButton:focus {
+    outline: none;
+} 
+
+.deletеCommentButton i{
+    padding-left: 120px;
+}
 .commentButton,
 .readComment {
     background-color: #860606;

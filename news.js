@@ -211,7 +211,7 @@ function displayComments(newsIndex) {
         const commentHTML = `
             <div class="comment">
                 <h3><i class="fa fa-user" ></i>Author: ${comment.author}</h3>
-                <button class="deleteButton" onclick="deleteComment(${newsIndex}, ${news.comments.indexOf(comment)})"><i class = "fa fa-trash"></i></button>
+                <button class="deletеCommentButton" onclick="deleteComment(${newsIndex}, ${news.comments.indexOf(comment)})"><i class = "fa fa-trash"></i></button>
                 <p>${comment.text}</p>
                 
             </div>
